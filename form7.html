@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin Design Elements - Form 7</title>
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+            background: white;
+        }
+        .header-bar {
+            width: 839px;
+            height: 21px;
+            background: #F7A600;
+            position: absolute;
+            top: 133px;
+            left: 28px;
+        }
+        .main-content {
+            width: 1382px;
+            height: 662px;
+            background: #F2C2D0;
+            position: absolute;
+            top: 267px;
+            left: 28px;
+        }
+        .subheader,
+        .footer {
+            width: 1383px;
+            background: #AF1D59;
+            position: absolute;
+            left: 28px;
+        }
+        .subheader {
+            height: 108px;
+            top: 267px;
+        }
+        .footer {
+            height: 256px;
+            top: 673px;
+        }
+        .button {
+            width: 310px; /* Adjusted width for smaller buttons */
+            height: 50px;
+            background: #E50046;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 24px; /* Adjusted font size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+        }
+        .button.none {
+            top: 425px;
+            left: 85px;
+        }
+        .button.standardization {
+            top: 425px;
+            left: 450px;
+        }
+        .button.semantic {
+            top: 425px;
+            left: 810px;
+        }
+        .button.selected {
+            background: #b3003b;
+            border: 3px solid #F7A600;
+        }
+        .input-box {
+            width: 1263px;
+            height: 60px;
+            background: white;
+            position: absolute;
+            top: 600px;
+            left: 82px;
+        }
+        .input-text {
+            width: 1256px;
+            height: 60px;
+            position: absolute;
+            top: 600px;
+            left: 89px;
+            text-align: center;
+            color: #524E4E;
+            font-size: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .text {
+            position: absolute;
+            color: white;
+            text-align: center;
+            font-size: 25px;
+        }
+        .text.header {
+            width: 367px;
+            height: 57px;
+            top: 200px; /* Adjusted 5px deeper */
+            left: 28px;
+            background-color: #AF1D59;
+            padding: 10px;
+        }
+        .text.main {
+            width: 900px;
+            height: 67px;
+            color: #262626;
+        }
+        .text.type {
+            top: 390px;
+            left: -75px;
+        }
+        .text.name {
+            top: 555px; /* Adjusted position */
+            left: 50px;
+        }
+        .main-question {
+            width: 1382px;
+            height: 105px;
+            position: absolute;
+            top: 315px;
+            left: 28px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+        }
+        .info-text {
+            width: 1280px;
+            height: 164px;
+            position: absolute;
+            top: 736px;
+            left: 90px; /* Adjusted to align with other sections */
+            color: white;
+            font-size: 20px;
+            font-weight: 300;
+        }
+        .footer-title {
+            width: 562px;
+            height: 63px;
+            position: absolute;
+            top: 685px; /* Adjusted position */
+            left: 55px; /* Adjusted to align with other sections */
+            text-align: center;
+            color: white;
+            font-size: 32px;
+        }
+        .main-title {
+            width: 868px;
+            height: 104px;
+            position: absolute;
+            top: 31px;
+            left: 28px;
+            color: black;
+            font-size: 50px;
+        }
+        .logo {
+            width: 200px;
+            height: 117px;
+            position: absolute;
+            top: 26px;
+            left: 1228px;
+        }
+        .logo2 {
+            width: 200px;
+            height: 117px;
+            position: absolute;
+            top: 26px;
+            left: 1015px;
+        }
+        .icon-container {
+            position: absolute;
+            top: 197px; /* Adjusted 5px higher */
+            left: 841px; /* Adjusted to align further right */
+            width: 550px;
+            height: 75px;
+            background-color: #AF1D59;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .icon {
+            width: 55px;
+            height: 55px;
+        }
+        .icon.highlight {
+            filter: invert(55%) sepia(100%) saturate(326%) hue-rotate(340deg) brightness(100%) contrast(101%);
+        }
+        .icon.eggshell {
+            filter: invert(96%) sepia(13%) saturate(157%) hue-rotate(319deg) brightness(104%) contrast(87%);
+        }
+        .go-back,
+        .next {
+            width: 101px;
+            height: 22px;
+            position: absolute;
+            font-size: 16px;
+            font-weight: 700;
+            color: black;
+            cursor: pointer;
+        }
+        .go-back {
+            top: 983px;
+            left: 1240px;
+        }
+        .next {
+            top: 983px;
+            left: 1350px;
+        }
+        .freitextfeld {
+            width: 1256px;
+            height: 69px;
+            position: absolute;
+            top: 596px; /* Adjusted position */
+            left: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .freitextfeld input {
+            width: 100%;
+            padding: 10px;
+            font-size: 32px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-bar"></div>
+    <div class="main-content"></div>
+    <div class="subheader"></div>
+    <div class="footer"></div>
+    <div class="button none" onclick="toggleSelection('none')">None (Ad hoc Modelling)</div>
+    <div class="button standardization" onclick="toggleSelection('standardization')">Standardization</div>
+    <div class="button semantic" onclick="toggleSelection('semantic')">Semantic Enrichment</div>
+    <div class="input-box"></div>
+    <div class="freitextfeld">
+        <input type="text" id="inputText" placeholder="Data Preprocessing">
+    </div>
+    <div class="text header">Data Preprocessing</div>
+    <div class="text main type">Please choose one type:</div>
+    <div class="text main name">Or type in your form of preprocessing</div>
+    <div class="main-question">Is there any data preprocessing needed before twinning your data?</div>
+    <div class="footer-title">Helpful Information | External Links</div>
+    <div class="info-text">Data preprocessing for digital twins involves several critical steps to ensure the accuracy and reliability of the modeled systems. Standardization ensures that data from various sources is consistent in format and units, facilitating accurate comparisons and analyses. In contrast, ad hoc modeling allows for direct use of raw data without extensive preprocessing, providing flexibility for real-time and exploratory analysis. Semantic enrichment adds contextual information to the data, making it more meaningful and easier to integrate with other datasets. These preprocessing steps enable digital twins to accurately reflect real-world conditions, support advanced analytics, and drive informed decision-making.</div>
+    <div class="main-title">In 10 Steps to Your Digital Twin:<br/>Defining Essential Design Elements</div>
+    <img class="logo" src="logo.png" alt="Logo">
+    <img class="logo2" src="Logo2.svg" alt="Logo 2">
+    <div class="icon-container">
+        <img class="icon eggshell" src="icon1.png" alt="Icon 1">
+        <img class="icon eggshell" src="icon2.png" alt="Icon 2">
+        <img class="icon eggshell" src="icon3.png" alt="Icon 3">
+        <img class="icon eggshell" src="icon4.png" alt="Icon 4">
+        <img class="icon eggshell" src="icon5.png" alt="Icon 5">
+        <img class="icon highlight" src="icon6.png" alt="Icon 6">
+        <img class="icon eggshell" src="icon7.png" alt="Icon 7">
+        <img class="icon eggshell" src="icon8.png" alt="Icon 8">
+        <img class="icon eggshell" src="icon9.png" alt="Icon 9">
+        <img class="icon eggshell" src="icon10.png" alt="Icon 10">
+    </div>
+    <div class="go-back" onclick="history.back()">GO BACK</div>
+    <div class="next" onclick="goToNextPage()">NEXT</div>
+</div>
+
+<script>
+    let selectedButtons = new Set();
+
+    function toggleSelection(buttonClass) {
+        const button = document.querySelector(`.button.${buttonClass}`);
+        button.classList.toggle('selected');
+        if (selectedButtons.has(buttonClass)) {
+            selectedButtons.delete(buttonClass);
+        } else {
+            selectedButtons.add(buttonClass);
+        }
+    }
+
+    function goToNextPage() {
+        const selectedTypes = Array.from(selectedButtons).map(buttonClass => {
+            return document.querySelector(`.button.${buttonClass}`).textContent;
+        });
+        const inputText = document.getElementById('inputText').value;
+        // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
+        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
+        localStorage.setItem('inputText', inputText);
+        window.location.href = 'form8.html'; // Adjust this URL as needed
+    }
+</script>
+
+</body>
+</html>

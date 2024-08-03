@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin</title>
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        .container {
+            width: 1440px;
+            height: 1100px;
+            position: relative;
+            background: white;
+            margin: 0 auto;
+        }
+        .header-bar {
+            width: 757px;
+            height: 21px;
+            background: #F7A600;
+            position: absolute;
+            top: 133px;
+            left: 23px;
+        }
+        .main-title {
+            width: 971px;
+            height: 119px;
+            color: black;
+            font-size: 50px;
+            font-weight: 400;
+            position: absolute;
+            top: 21px;
+            left: 28px;
+        }
+        .logo2 {
+            width: 135px;
+            height: 113px;
+            position: absolute;
+            top: 30px;
+            left: 1121px;
+        }
+        .logo {
+            width: 153px;
+            height: 117px;
+            position: absolute;
+            top: 26px;
+            left: 1258px;
+        }
+        .main-content {
+            width: 1382px;
+            height: 535px;
+            background: #F2C2D0;
+            position: absolute;
+            top: 350px;
+            left: 28px;
+        }
+        .subheader {
+            width: 1383px;
+            height: 108px;
+            background: #AF1D59;
+            position: absolute;
+            top: 242px;
+            left: 28px;
+        }
+        .footer {
+            width: 1382px;
+            height: 147px;
+            background: #AF1D59;
+            position: absolute;
+            top: 885px;
+            left: 29px;
+        }
+        .subheader-text {
+            width: 1382px;
+            height: 105px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+            position: absolute;
+            top: 245px;
+            left: 29px;
+        }
+        .box {
+            width: 246px;
+            height: 305px;
+            position: absolute;
+            top: 545px;
+            left: 122px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+        .button {
+            width: 175px;
+            height: 33px;
+            background: #E50046;
+            border-radius: 5px;
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        .button.data-capturing {
+            top: 792px;
+            left: 162px;
+        }
+        .button.electronic-control-unit {
+            top: 727px;
+            left: 158px;
+        }
+        .button.data-transfer-module {
+            top: 528px;
+            left: 156px;
+        }
+        .icon {
+            width: 90px;
+            height: 90px;
+            position: absolute;
+            top: 606px;
+            left: 200px;
+        }
+        .button.data-repository {
+            top: 447px;
+            left: 558px;
+        }
+        .button.other-data-sources {
+            top: 432px;
+            left: 158px;
+        }
+        .description-box {
+            width: 439px;
+            height: 443px;
+            background: #E9560D;
+            border-radius: 5px;
+            position: absolute;
+            top: 397px;
+            left: 921px;
+            color: white;
+            font-size: 15px;
+            font-weight: 400;
+            text-align: justify;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .description-text {
+            text-decoration: underline;
+        }
+        .info {
+            width: 1323px;
+            height: 62px;
+            color: white;
+            font-size: 20px;
+            font-weight: 300;
+            position: absolute;
+            top: 933px;
+            left: 62px;
+        }
+        .info-title {
+            width: 562px;
+            height: 63px;
+            color: white;
+            font-size: 32px;
+            font-weight: 400;
+            position: absolute;
+            top: 890px;
+            left: 62px;
+        }
+        .button.twinning-engine {
+            top: 672px;
+            left: 560px;
+        }
+        .button.digital-twin-function {
+            top: 606px;
+            left: 562px;
+        }
+        .button.data-preprocessing {
+            top: 507px;
+            left: 562px;
+        }
+        .button.model-use {
+            top: 780px;
+            left: 562px;
+        }
+        .button.model-repository {
+            top: 747px;
+            left: 560px;
+            text-align: center;
+            color: #262626;
+        }
+        .arrow {
+            position: absolute;
+            border: 1px #524E4E solid;
+        }
+        .arrow.horizontal {
+            height: 0px;
+        }
+        .arrow.vertical {
+            width: 0px;
+        }
+        .arrow1 {
+            width: 135px;
+            left: 331px;
+            top: 539px;
+        }
+        .arrow2 {
+            height: 91px;
+            left: 466px;
+            top: 449px;
+            border-width: 0 1px;
+        }
+        .arrow3 {
+            height: 147px;
+            left: 788px;
+            top: 472px;
+            border-width: 0 1px;
+        }
+        .arrow4 {
+            height: 98px;
+            left: 788px;
+            top: 688px;
+            border-width: 0 1px;
+        }
+        .arrow5 {
+            width: 18px;
+            left: 770px;
+            top: 786px;
+        }
+        .arrow6 {
+            width: 18px;
+            left: 770px;
+            top: 472px;
+        }
+        .arrow7 {
+            width: 111px;
+            left: 524px;
+            top: 655px;
+            transform: rotate(180deg);
+        }
+        .arrow8 {
+            height: 90.02px;
+            left: 411px;
+            top: 745px;
+            transform: rotate(90deg);
+            border-width: 0 1px;
+        }
+        .arrow9 {
+            width: 191.02px;
+            left: 368px;
+            top: 446px;
+            transform: rotate(0.90deg);
+        }
+        .arrow10 {
+            width: 17px;
+            left: 788px;
+            top: 619px;
+            transform: rotate(180deg);
+        }
+        .arrow11 {
+            width: 17px;
+            left: 788px;
+            top: 688px;
+            transform: rotate(180deg);
+        }
+        .arrow12 {
+            width: 43px;
+            left: 411px;
+            top: 744px;
+            transform: rotate(-180deg);
+        }
+        .text {
+            position: absolute;
+            text-align: center;
+            color: #262626;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        .text1 {
+            top: 635px;
+            left: 562px;
+        }
+        .text2 {
+            top: 573px;
+            left: 162px;
+        }
+        .text3 {
+            top: 431px;
+            left: 560px;
+            color: white;
+        }
+        .text4 {
+            top: 475px;
+            left: 563px;
+            color: #262626;
+        }
+        .text5 {
+            top: 413px;
+            left: 560px;
+            color: #262626;
+        }
+        .text6 {
+            top: 567px;
+            left: 561px;
+        }
+        .text7 {
+            top: 694px;
+            left: 162px;
+        }
+        .text8 {
+            top: 759px;
+            left: 162px;
+        }
+        .box1 {
+            width: 246px;
+            height: 142px;
+            position: absolute;
+            top: 372px;
+            left: 122px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+        .box2 {
+            width: 246px;
+            height: 169px;
+            position: absolute;
+            top: 558px;
+            left: 525px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+        .box3 {
+            width: 311px;
+            height: 475px;
+            position: absolute;
+            top: 371px;
+            left: 494px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+        .box4 {
+            width: 246px;
+            height: 88px;
+            position: absolute;
+            top: 738px;
+            left: 524px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+        .box5 {
+            width: 246px;
+            height: 142px;
+            position: absolute;
+            top: 372px;
+            left: 524px;
+            border-radius: 30px;
+            border: 1px #524E4E solid;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-bar"></div>
+    <div class="main-title">In 10 Steps to Your Digital Twin:<br/>Your Digital Twin of a FORM1.A</div>
+    <img class="logo2" src="logo2.svg" alt="Logo 2" />
+    <img class="logo" src="logo.png" alt="Logo" />
+    <div class="main-content"></div>
+    <div class="subheader"></div>
+    <div class="footer"></div>
+    <div class="subheader-text">Your Digital Twin System Architecture</div>
+    <div class="box"></div>
+    <div class="button data-capturing">Data Capturing</div>
+    <div class="button electronic-control-unit">Electronic Control Unit</div>
+    <div class="button data-transfer-module">Data Transfer Module</div>
+    <img class="icon" src="iconmachinetool.png" alt="Icon Machine Tool" />
+    <div class="button data-repository">Data Repository</div>
+    <div class="button other-data-sources">Other Data Sources</div>
+    <div class="description-box">
+        <span>We hope you had a great experience using our morphological box for designing the key components of your digital twin system architecture. Here is a short summary of your choices: <br/><br/>You want to create a digital twin for a <span class="description-text">FORM1.A</span>, or more precise a <span class="description-text">name of your physical object</span>. The <span class="description-text">name of your physical object</span> is controlled by a <span class="description-text">Electronic Control unit</span>. Your Digital Twin will use shadow data that is captured by <span class="description-text">Data Capturing</span>. Your <span class="description-text">FORM1.A</span>. will transfer the data via a <span class="description-text">Data Transfer Module</span> to your data repository together with <span class="description-text">Other data Sources</span>. In your data repository, a <span class="description-text">Data Repository</span> your shadow data will be preprocessed by <span class="description-text">Data Preprocessing</span>. To enable your digital twin to <span class="description-text">Digital Twin Function</span> your will use <span class="description-text">Twinning Engine</span>. The Twinning Engine will twin your shadow data with your <span class="description-text">Model Use</span> to get the relevant information and to <span class="description-text">Digital Twin Function</span> your <span class="description-text">Name of your physical object</span>. <br/><br/>If you have questions about the development of your digital twin please reach out to kremer@tu-berlin.de</span>
+    </div>
+    <div class="info">Gerald Kremer  |  Department of Industrial IT  |  TU Berlin  |  kremer@tu-berlin.de</div>
+    <div class="info-title">More Information</div>
+    <div class="button twinning-engine">Twinning Engine</div>
+    <div class="button digital-twin-function">Digital Twin Function</div>
+    <div class="button data-preprocessing">Data Preprocessing</div>
+    <div class="button model-use">Model Use</div>
+    <div class="button model-repository">Model Repository</div>
+    <div class="arrow horizontal arrow1"></div>
+    <div class="arrow vertical arrow2"></div>
+    <div class="arrow vertical arrow3"></div>
+    <div class="arrow vertical arrow4"></div>
+    <div class="arrow horizontal arrow5"></div>
+    <div class="arrow horizontal arrow6"></div>
+    <div class="arrow horizontal arrow7"></div>
+    <div class="arrow vertical arrow8"></div>
+    <div class="arrow horizontal arrow9"></div>
+    <div class="arrow horizontal arrow10"></div>
+    <div class="arrow horizontal arrow11"></div>
+    <div class="arrow horizontal arrow12"></div>
+    <div class="text text1">through</div>
+    <div class="text text2">Name of your physical object</div>
+    <div class="text text3">Other Data Sources</div>
+    <div class="text text4">preprocessed with</div>
+    <div class="text text5">Data Repository</div>
+    <div class="text text6">Twinning Engine</div>
+    <div class="text text7">controlled by</div>
+    <div class="text text8">data captured through</div>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+</div>
+
+</body>
+</html>
