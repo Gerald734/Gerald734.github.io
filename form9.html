@@ -262,7 +262,7 @@
     <div class="button ansys" onclick="toggleSelection('ansys')">Ansys Twin Builder</div>
     <div class="button mindsphere" onclick="toggleSelection('mindsphere')">Siemens MindSphere</div>
     <div class="button predix" onclick="toggleSelection('predix')">GE Predix</div>
-    <div class="button ownscript" onclick="toggleSelection('ownscript')">own script (e.g. Python)</div>
+    <div class="button ownscript" onclick="toggleSelection('ownscript')">Own Script (e.g. Python)</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
         <input type="text" id="inputText" placeholder="Twinning Engine">
@@ -311,8 +311,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinTwinningEngineButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinTwinningEngineText', inputText);
         window.location.href = 'form10.html'; // Adjust this URL as needed
     }
 </script>

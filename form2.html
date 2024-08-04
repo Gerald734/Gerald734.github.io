@@ -260,8 +260,8 @@
     <div class="button gps" onclick="toggleSelection('gps')">GPS-/Position-Sensor</div>
     <div class="button ecg" onclick="toggleSelection('ecg')">ECG (Pulse)-Sensor</div>
     <div class="button flexometer" onclick="toggleSelection('flexometer')">Flexometer</div>
-    <div class="button force" onclick="toggleSelection('force')">Force</div>
-    <div class="button humidity" onclick="toggleSelection('humidity')">Humidity and Temperature</div>
+    <div class="button force" onclick="toggleSelection('force')">Force-Sensor</div>
+    <div class="button humidity" onclick="toggleSelection('humidity')">Temperature-Sensor</div>
     <div class="button ecu" onclick="toggleSelection('ecu')">Operational Data by ECU</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
@@ -311,8 +311,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinDataButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinDataText', inputText);
         window.location.href = 'form3.html'; // Adjust this URL as needed
     }
 </script>

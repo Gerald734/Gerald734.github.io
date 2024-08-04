@@ -269,7 +269,7 @@
     </div>
     <div class="text header">Digital Twin Function</div>
     <div class="text main type">Please choose (more than one selection is possible):</div>
-    <div class="text main name">If none of the above mentioned is correct, please type in your solution here:</div>
+    <div class="text main name">If none of the above mentioned is correct, please type in your function here:</div>
     <div class="main-question">What function does your digital twin have?</div>
     <div class="footer-title">Helpful Information | External Links</div>
     <div class="info-text">Monitoring includes real-time tracking of system parameters and fault detection. Simulation allows for virtual testing and scenario analysis to improve efficiency and reduce risks. Prediction uses data to forecast future states and maintenance needs with machine learning models. Control involves remote management and automated adjustments to optimize performance. Optimization identifies strategies to enhance efficiency using continuous data analysis. Maintenance includes predictive maintenance to prevent failures and plan activities based on condition data. Lifecycle Management oversees the entire lifecycle of a product or system, aiding in development and improvement. These functions provide in-depth analysis and control, leading to greater efficiency, lower costs, and improved performance.</div>
@@ -311,8 +311,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinFunctionButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinFunctionText', inputText);
         window.location.href = 'form9.html'; // Adjust this URL as needed
     }
 </script>

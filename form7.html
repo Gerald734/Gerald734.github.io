@@ -67,7 +67,7 @@
             top: 425px;
             left: 85px;
         }
-        .button.standardization {
+        .button.DataCleaning {
             top: 425px;
             left: 450px;
         }
@@ -121,11 +121,11 @@
         }
         .text.type {
             top: 390px;
-            left: -75px;
+            left: -230px;
         }
         .text.name {
             top: 555px; /* Adjusted position */
-            left: 50px;
+            left: -160px;
         }
         .main-question {
             width: 1382px;
@@ -246,7 +246,7 @@
     <div class="subheader"></div>
     <div class="footer"></div>
     <div class="button none" onclick="toggleSelection('none')">None (Ad hoc Modelling)</div>
-    <div class="button standardization" onclick="toggleSelection('standardization')">Standardization</div>
+    <div class="button DataCleaning" onclick="toggleSelection('data cleaning')">Data Cleaning</div>
     <div class="button semantic" onclick="toggleSelection('semantic')">Semantic Enrichment</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
@@ -254,7 +254,7 @@
     </div>
     <div class="text header">Data Preprocessing</div>
     <div class="text main type">Please choose one type:</div>
-    <div class="text main name">Or type in your form of preprocessing</div>
+    <div class="text main name">Or type in your form of preprocessing:</div>
     <div class="main-question">Is there any data preprocessing needed before twinning your data?</div>
     <div class="footer-title">Helpful Information | External Links</div>
     <div class="info-text">Data preprocessing for digital twins involves several critical steps to ensure the accuracy and reliability of the modeled systems. Standardization ensures that data from various sources is consistent in format and units, facilitating accurate comparisons and analyses. In contrast, ad hoc modeling allows for direct use of raw data without extensive preprocessing, providing flexibility for real-time and exploratory analysis. Semantic enrichment adds contextual information to the data, making it more meaningful and easier to integrate with other datasets. These preprocessing steps enable digital twins to accurately reflect real-world conditions, support advanced analytics, and drive informed decision-making.</div>
@@ -267,8 +267,8 @@
         <img class="icon eggshell" src="icon3.png" alt="Icon 3">
         <img class="icon eggshell" src="icon4.png" alt="Icon 4">
         <img class="icon eggshell" src="icon5.png" alt="Icon 5">
-        <img class="icon highlight" src="icon6.png" alt="Icon 6">
-        <img class="icon eggshell" src="icon7.png" alt="Icon 7">
+        <img class="icon eggshell" src="icon6.png" alt="Icon 6">
+        <img class="icon highlight" src="icon7.png" alt="Icon 7">
         <img class="icon eggshell" src="icon8.png" alt="Icon 8">
         <img class="icon eggshell" src="icon9.png" alt="Icon 9">
         <img class="icon eggshell" src="icon10.png" alt="Icon 10">
@@ -296,8 +296,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinPreProcessingButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinPreProcessingText', inputText);
         window.location.href = 'form8.html'; // Adjust this URL as needed
     }
 </script>

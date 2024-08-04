@@ -36,19 +36,19 @@
             top: 21px;
             left: 28px;
         }
-        .logo2 {
-            width: 135px;
-            height: 113px;
-            position: absolute;
-            top: 30px;
-            left: 1121px;
-        }
         .logo {
-            width: 153px;
+            width: 200px;
             height: 117px;
             position: absolute;
             top: 26px;
-            left: 1258px;
+            left: 1228px;
+        }
+        .logo2 {
+            width: 200px;
+            height: 117px;
+            position: absolute;
+            top: 26px;
+            left: 1015px;
         }
         .main-content {
             width: 1382px;
@@ -58,7 +58,7 @@
             top: 350px;
             left: 28px;
         }
-        .subheader {
+        .subheader { /*   das hier ist die box wo your digital twin archictecture drin steht   */
             width: 1383px;
             height: 108px;
             background: #AF1D59;
@@ -85,14 +85,14 @@
             top: 245px;
             left: 29px;
         }
-        .box {
+        .box {    /* box um die physische Maschine  */
             width: 246px;
             height: 305px;
             position: absolute;
             top: 545px;
             left: 122px;
             border-radius: 30px;
-            border: 1px #524E4E solid;
+            border: 2px #524E4E solid;
         }
         .button {
             width: 175px;
@@ -150,24 +150,24 @@
         .description-text {
             text-decoration: underline;
         }
-        .info {
+        .info {   /*  Gerald Kremer  */
             width: 1323px;
             height: 62px;
             color: white;
             font-size: 20px;
             font-weight: 300;
             position: absolute;
-            top: 933px;
+            top: 950px;
             left: 62px;
         }
-        .info-title {
+        .info-title { /*  More Info  */
             width: 562px;
             height: 63px;
             color: white;
             font-size: 32px;
             font-weight: 400;
             position: absolute;
-            top: 890px;
+            top: 900px;
             left: 62px;
         }
         .button.twinning-engine {
@@ -202,74 +202,104 @@
         .arrow.vertical {
             width: 0px;
         }
+        
         .arrow1 {
             width: 135px;
             left: 331px;
             top: 539px;
         }
-        .arrow2 {
-            height: 91px;
+        .arrow2 {     /* links vertikal oben */
+            height: 80px;
             left: 466px;
-            top: 449px;
+            top: 460px;
             border-width: 0 1px;
         }
-        .arrow3 {
+        .arrow3 {  /* rechts vertikal oben */
             height: 147px;
             left: 788px;
             top: 472px;
             border-width: 0 1px;
         }
-        .arrow4 {
+        .arrow4 {    /* rechts vertikal unten */
             height: 98px;
             left: 788px;
             top: 688px;
             border-width: 0 1px;
         }
-        .arrow5 {
+        .arrow5 {     /* rechts von model repository weggehend */
             width: 18px;
             left: 770px;
             top: 786px;
         }
-        .arrow6 {
+        .arrow6 {      /* rechts von data repository weggehend */
             width: 18px;
             left: 770px;
             top: 472px;
         }
-        .arrow7 {
+        .arrow7 {     /*  links hin zur twinning engine */
             width: 111px;
-            left: 524px;
+            left: 412px;
             top: 655px;
-            transform: rotate(180deg);
         }
-        .arrow8 {
+        .arrow8 {      /*  vertikal unten links  */
             height: 90.02px;
             left: 411px;
-            top: 745px;
-            transform: rotate(90deg);
+            top: 655px;
+            transform: rotate(180deg);
             border-width: 0 1px;
         }
-        .arrow9 {
-            width: 191.02px;
-            left: 368px;
-            top: 446px;
+        .arrow9 {    /*  von data source hin zur data repository  */
+            width: 180px;
+            left: 370px;
+            top: 460px;
             transform: rotate(0.90deg);
         }
-        .arrow10 {
+        .arrow10 {   /*  ganz rechts hin zur function  */
             width: 17px;
-            left: 788px;
+            left: 771px;
             top: 619px;
             transform: rotate(180deg);
         }
-        .arrow11 {
+        .arrow11 {    /*  ganz rechts hin zur twinning engine  */
             width: 17px;
-            left: 788px;
+            left: 771px;
             top: 688px;
             transform: rotate(180deg);
         }
-        .arrow12 {
+        .arrow12 {        /*  ganz unten links  */
             width: 43px;
-            left: 411px;
+            left: 368px;
             top: 744px;
+            transform: rotate(-180deg);
+        }
+        .arrowhead1 {     /*  hin zum data repository  */
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 457px;
+            left: 549px;
+        }
+        .arrowhead2 {     /* links unten  */
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 651px;
+            left: 516px;
+        }
+        .arrowhead3 {     /*  rechts oben */
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 615px;
+            left: 771px;
+            transform: rotate(-180deg);
+        }
+        .arrowhead4 {     /*  rechts unten  */
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 684px;
+            left: 771px;
             transform: rotate(-180deg);
         }
         .text {
@@ -279,69 +309,81 @@
             font-size: 12px;
             font-weight: 400;
         }
-        .text1 {
-            top: 635px;
-            left: 562px;
+        .text1 {/* through */
+            top: 648px;
+            left: 620px;
         }
-        .text2 {
+        .text2 {/* eingetragener Name des Zwillings */
             top: 573px;
-            left: 162px;
+            left: 200px;
         }
         .text3 {
-            top: 431px;
+            top: 431px; /* default data source */
             left: 560px;
             color: white;
         }
-        .text4 {
-            top: 475px;
-            left: 563px;
+        .text4 {/* through */
+            top: 485px;
+            left: 590px;
             color: #262626;
         }
-        .text5 {
-            top: 413px;
-            left: 560px;
+        .text5 {/* data repository */
+            top: 425px;
+            left: 600px;
             color: #262626;
         }
-        .text6 {
-            top: 567px;
-            left: 561px;
+        .text6 {   /*twinning engine*/
+            top: 580px;
+            left: 601px;
         }
-        .text7 {
-            top: 694px;
-            left: 162px;
+        .text7 {         /* controlled by   */
+            top: 705px;
+            left: 210px;
         }
-        .text8 {
-            top: 759px;
-            left: 162px;
+        .text8 {       /* data captured by */
+            top: 767px;
+            left: 180px;
         }
-        .box1 {
+        .text9 {       /* External data source */
+            top: 400px;
+            left: 180px;
+        }
+        .text10 {   /*Model Repository*/
+            top: 750px;
+            left: 601px;
+        }
+        .text11 {   /*    digital twin   */
+            top: 390px;
+            left: 620px;
+        }
+        .box1 {    /*  Box um External data source */
             width: 246px;
             height: 142px;
             position: absolute;
             top: 372px;
             left: 122px;
             border-radius: 30px;
-            border: 1px #524E4E solid;
+            border: 2px #524E4E solid;
         }
-        .box2 {
+        .box2 {     /*  Box um twinning engine  */
             width: 246px;
-            height: 169px;
+            height: 155px;
             position: absolute;
-            top: 558px;
+            top: 572px;
             left: 525px;
             border-radius: 30px;
             border: 1px #524E4E solid;
         }
-        .box3 {
+        .box3 {   /*  große Box ganz rechts  */
             width: 311px;
             height: 475px;
             position: absolute;
             top: 371px;
             left: 494px;
             border-radius: 30px;
-            border: 1px #524E4E solid;
+            border: 2px #524E4E solid;
         }
-        .box4 {
+        .box4 {        /*  Box um Model Repository  */
             width: 246px;
             height: 88px;
             position: absolute;
@@ -350,11 +392,11 @@
             border-radius: 30px;
             border: 1px #524E4E solid;
         }
-        .box5 {
+        .box5 {       /*  Box um Data Repository  */
             width: 246px;
             height: 142px;
             position: absolute;
-            top: 372px;
+            top: 418px;
             left: 524px;
             border-radius: 30px;
             border: 1px #524E4E solid;
@@ -380,7 +422,7 @@
     <div class="button data-repository">Data Repository</div>
     <div class="button other-data-sources">Other Data Sources</div>
     <div class="description-box">
-        <span>We hope you had a great experience using our morphological box for designing the key components of your digital twin system architecture. Here is a short summary of your choices: <br/><br/>You want to create a digital twin for a <span class="description-text">FORM1.A</span>, or more precise a <span class="description-text">name of your physical object</span>. The <span class="description-text">name of your physical object</span> is controlled by a <span class="description-text">Electronic Control unit</span>. Your Digital Twin will use shadow data that is captured by <span class="description-text">Data Capturing</span>. Your <span class="description-text">FORM1.A</span>. will transfer the data via a <span class="description-text">Data Transfer Module</span> to your data repository together with <span class="description-text">Other data Sources</span>. In your data repository, a <span class="description-text">Data Repository</span> your shadow data will be preprocessed by <span class="description-text">Data Preprocessing</span>. To enable your digital twin to <span class="description-text">Digital Twin Function</span> your will use <span class="description-text">Twinning Engine</span>. The Twinning Engine will twin your shadow data with your <span class="description-text">Model Use</span> to get the relevant information and to <span class="description-text">Digital Twin Function</span> your <span class="description-text">Name of your physical object</span>. <br/><br/>If you have questions about the development of your digital twin please reach out to kremer@tu-berlin.de</span>
+        <span>We hope you had a great experience using our morphological box for designing the key components of your digital twin system architecture. Here is a short summary of your choices: <br/><br/>You want to create a digital twin for a <span class="description-text">FORM1.A</span>, or more precise a <span class="description-text">name of your physical object</span>. The <span class="description-text">name of your physical object</span> is controlled by a <span class="description-text">Electronic Control Unit</span>. Your Digital Twin will use shadow data that is captured by <span class="description-text">Data Capturing</span>. Your <span class="description-text">FORM1.A</span>. will transfer the data via a <span class="description-text">Data Transfer Module</span> to your data repository together with <span class="description-text">Other Data Sources</span>. In your data repository, a <span class="description-text">Data Repository</span> your shadow data will be preprocessed by <span class="description-text">Data Preprocessing</span>. To enable your digital twin to <span class="description-text">Digital Twin Function</span> your will use <span class="description-text">Twinning Engine</span>. The Twinning Engine will twin your shadow data with your <span class="description-text">Model Use</span> to get the relevant information and to <span class="description-text">Digital Twin Function</span> your <span class="description-text">Name of your physical object</span>. <br/><br/>If you have questions about the development of your digital twin please reach out to kremer@tu-berlin.de</span>
     </div>
     <div class="info">Gerald Kremer  |  Department of Industrial IT  |  TU Berlin  |  kremer@tu-berlin.de</div>
     <div class="info-title">More Information</div>
@@ -388,7 +430,6 @@
     <div class="button digital-twin-function">Digital Twin Function</div>
     <div class="button data-preprocessing">Data Preprocessing</div>
     <div class="button model-use">Model Use</div>
-    <div class="button model-repository">Model Repository</div>
     <div class="arrow horizontal arrow1"></div>
     <div class="arrow vertical arrow2"></div>
     <div class="arrow vertical arrow3"></div>
@@ -401,6 +442,10 @@
     <div class="arrow horizontal arrow10"></div>
     <div class="arrow horizontal arrow11"></div>
     <div class="arrow horizontal arrow12"></div>
+    <img class="arrowhead1" src="arrowhead1.png" alt="arrowhead1" />
+    <img class="arrowhead2" src="arrowhead1.png" alt="arrowhead1" />
+    <img class="arrowhead3" src="arrowhead1.png" alt="arrowhead1" />
+    <img class="arrowhead4" src="arrowhead1.png" alt="arrowhead1" />
     <div class="text text1">through</div>
     <div class="text text2">Name of your physical object</div>
     <div class="text text3">Other Data Sources</div>
@@ -409,12 +454,131 @@
     <div class="text text6">Twinning Engine</div>
     <div class="text text7">controlled by</div>
     <div class="text text8">data captured through</div>
+    <div class="text text9">External data source</div>
+    <div class="text text10">Model Repository</div>
+    <div class="text text11">Digital Twin</div>
     <div class="box box1"></div>
     <div class="box box2"></div>
     <div class="box box3"></div>
     <div class="box box4"></div>
     <div class="box box5"></div>
 </div>
+
+<script>
+    // getValidValue is used if only either the text field or the button selection should be used
+    // getConcatenatedValue uses both if they contain values
+    function getValidValue(buttonKey, textKey, defaultValue) {
+        // Retrieve and parse the value from buttonKey
+        let value = localStorage.getItem(buttonKey);
+        if (value !== null) {
+            try {
+                let parsedValue = JSON.parse(value);
+                if (Array.isArray(parsedValue) && parsedValue.length > 0) {
+                    // Convert array to a string
+                    return parsedValue.join(', ');
+                } else if (typeof parsedValue === 'string' && parsedValue.trim() !== '') {
+                    return parsedValue;
+                }
+            } catch (e) {
+                // Parsing failed, fall back to raw value
+                if (typeof value === 'string' && value.trim() !== '') {
+                    return value;
+                }
+            }
+        }
+    
+        // If buttonKey is not valid, check the textKey
+        value = localStorage.getItem(textKey);
+        if (typeof value === 'string' && value.trim() !== '') {
+            return value;
+        }
+    
+        // Return the default value if neither buttonKey nor textKey are valid
+        return defaultValue;
+    }
+
+    function getConcatenatedValue(buttonKey, textKey, defaultValue) {
+        // Retrieve and parse the value from buttonKey
+        let buttonValue = localStorage.getItem(buttonKey);
+        let textValue = localStorage.getItem(textKey);
+    
+        // Initialize the result variable
+        let result = '';
+    
+        // Check if buttonValue is valid
+        if (buttonValue !== null) {
+            try {
+                let parsedButtonValue = JSON.parse(buttonValue);
+                if (Array.isArray(parsedButtonValue) && parsedButtonValue.length > 0) {
+                    result += parsedButtonValue.join(', ');
+                } else if (typeof parsedButtonValue === 'string' && parsedButtonValue.trim() !== '') {
+                    result += parsedButtonValue;
+                }
+            } catch (e) {
+                // If parsing fails, fall back to raw value
+                if (typeof buttonValue === 'string' && buttonValue.trim() !== '') {
+                    result += buttonValue;
+                }
+            }
+        }
+    
+        // Add a space or separator if both buttonValue and textValue are valid
+        if (result && textValue !== null) {
+            if (typeof textValue === 'string' && textValue.trim() !== '') {
+                result += ' ' + textValue;
+            }
+        } else if (textValue !== null) {
+            // If only textValue is valid
+            if (typeof textValue === 'string' && textValue.trim() !== '') {
+                result = textValue;
+            }
+        }
+    
+        // If result is empty or invalid, return the default value
+        return result.trim() !== '' ? result : defaultValue;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('All localStorage items:', { ...localStorage });
+        var digitalTwinObject = localStorage.getItem("digitalTwinObject") || 'Default Type';
+        var digitalTwinName = localStorage.getItem("digitalTwinName") || 'Default Name';
+        var digitalTwinDataType = getConcatenatedValue("digitalTwinDataButton","digitalTwinDataText", "Default Data")
+        var digitalTwinControlType = getConcatenatedValue("digitalTwinControlTypeButton", "digitalTwinControlTypeText", "Default Control Type");
+        var digitalTwinDataTransfer = getConcatenatedValue("digitalTwinDataTransferButton", "digitalTwinDataTransferText", "Default Data Transfer");
+        var digitalTwinDataSource = getValidValue("digitalTwinDataSourceButton", "digitalTwinDataSourceText", "Default Data Source");
+        var digitalTwinRepository = getValidValue("digitalTwinRepositoryButton", "digitalTwinRepositoryText", "Data Repository");
+        var digitalTwinPreProcessing = getValidValue("digitalTwinPreProcessingButton", "digitalTwinPreProcessingText", "Default Preprocessing");
+        var digitalTwinFunction = getValidValue("digitalTwinFunctionButton", "digitalTwinFunctionText", "Default Function");
+        var digitalTwinTwinningEngine = getValidValue("digitalTwinTwinningEngineButton", "digitalTwinTwinningEngineText", "Twinning Engine");
+        var digitalTwinModel = getValidValue("digitalTwinModelButton", "digitalTwinModelText", "Default Model");
+        
+        // Replace all instances in the entire document
+        document.body.innerHTML = document.body.innerHTML.replace(/FORM1\.A/gi, digitalTwinObject);
+        document.body.innerHTML = document.body.innerHTML.replace(/name of your physical object/gi, digitalTwinName);
+        document.body.innerHTML = document.body.innerHTML.replace(/Data Capturing/gi, digitalTwinDataType);
+        document.body.innerHTML = document.body.innerHTML.replace(/Electronic Control Unit/gi, digitalTwinControlType);
+        document.body.innerHTML = document.body.innerHTML.replace(/Data Transfer Module/gi, digitalTwinDataTransfer);
+        document.body.innerHTML = document.body.innerHTML.replace(/Other Data Sources/gi, digitalTwinDataSource);
+        document.body.innerHTML = document.body.innerHTML.replace(/Data Repository/gi, digitalTwinRepository);
+        document.body.innerHTML = document.body.innerHTML.replace(/Data Preprocessing/gi, digitalTwinPreProcessing);
+        document.body.innerHTML = document.body.innerHTML.replace(/Digital Twin Function/gi, digitalTwinFunction);
+        document.body.innerHTML = document.body.innerHTML.replace(/Twinning Engine/gi, digitalTwinTwinningEngine);
+        document.body.innerHTML = document.body.innerHTML.replace(/Model Use/gi, digitalTwinModel);
+
+        // digitalTwinObject mapping to the according icon png
+        const imageMapping = {
+            'Default Type': 'iconmachinetool.png',
+            'Machine Tool': 'iconmachinetool.png',
+            'Process': 'iconprocess.png',
+            'Product': 'iconproduct.png',
+            // Add more mappings as needed
+        };
+        // selecting the img element of the class icon
+        var icon = document.querySelector("img.icon")
+        var imageFilename = imageMapping[digitalTwinObject]; 
+        icon.src = imageFilename;
+    });
+</script>
 
 </body>
 </html>

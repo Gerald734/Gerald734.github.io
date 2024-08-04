@@ -258,11 +258,11 @@
     <div class="subheader"></div>
     <div class="footer"></div>
     <div class="button none" onclick="toggleSelection('none')">None</div>
-    <div class="button geometric" onclick="toggleSelection('geometric')">Geometric Modelling</div>
-    <div class="button physics-based" onclick="toggleSelection('physics-based')">Physics-Based Modelling</div>
-    <div class="button data-driven" onclick="toggleSelection('data-driven')">Data-Driven Modelling</div>
+    <div class="button geometric" onclick="toggleSelection('geometric')">Geometric Model</div>
+    <div class="button physics-based" onclick="toggleSelection('physics-based')">Physics-Based Model</div>
+    <div class="button data-driven" onclick="toggleSelection('data-driven')">Data-Driven Model</div>
     <div class="button physics-informed" onclick="toggleSelection('physics-informed')">Physics-Informed ML</div>
-    <div class="button system" onclick="toggleSelection('system')">System Models</div>
+    <div class="button system" onclick="toggleSelection('system')">System Model</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
         <input type="text" id="inputText" placeholder="Model Use">
@@ -311,8 +311,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinModelButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinModelText', inputText);
         window.location.href = 'results.html'; // Adjust this URL as needed
     }
 </script>

@@ -262,13 +262,13 @@
     <div class="button nosql" onclick="toggleSelection('nosql')">NoSQL Database</div>
     <div class="button datalake" onclick="toggleSelection('datalake')">Data Lake</div>
     <div class="button graph" onclick="toggleSelection('graph')">Graph Database</div>
-    <div class="button specialized" onclick="toggleSelection('specialized')">Specialized twin platform (AAS)</div>
+    <div class="button specialized" onclick="toggleSelection('specialized')">Specialized twin platform (e.g. AAS)</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
         <input type="text" id="inputText" placeholder="Data Repository">
     </div>
     <div class="text header">Data Repository</div>
-    <div class="text main type">Please choose one type:</div>
+    <div class="text main type">Please choose (more than one selection is possible):</div>
     <div class="text main name">If none of the above mentioned is correct, please type in your solution here:</div>
     <div class="main-question">In which type of repository do you store your digital twin data:</div>
     <div class="footer-title">Helpful Information | External Links</div>
@@ -311,8 +311,8 @@
         });
         const inputText = document.getElementById('inputText').value;
         // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('selectedTypes', JSON.stringify(selectedTypes));
-        localStorage.setItem('inputText', inputText);
+        localStorage.setItem('digitalTwinRepositoryButton', JSON.stringify(selectedTypes));
+        localStorage.setItem('digitalTwinRepositoryText', inputText);
         window.location.href = 'form7.html'; // Adjust this URL as needed
     }
 </script>
