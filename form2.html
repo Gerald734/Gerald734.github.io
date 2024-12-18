@@ -248,6 +248,11 @@
             font-size: 32px;
             border: 1px solid #ccc;
         }
+        .button.disabled {
+            background: #e0e0e0;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -293,28 +298,123 @@
 </div>
 
 <script>
-    let selectedButtons = new Set();
+    let selectedButton = null; // To track the selected button
 
-    function toggleSelection(buttonClass) {
-        const button = document.querySelector(`.button.${buttonClass}`);
-        button.classList.toggle('selected');
-        if (selectedButtons.has(buttonClass)) {
-            selectedButtons.delete(buttonClass);
-        } else {
-            selectedButtons.add(buttonClass);
+    // Restore state from localStorage
+    function restoreState() {
+        const storedButtonClass = localStorage.getItem('digitalTwinDataButtonClass');
+        const storedText = localStorage.getItem('digitalTwinDataText');
+        const inputField = document.getElementById('inputText');
+
+        // Restore text input
+        inputField.value = storedText || '';
+
+        // Handle button and text input state
+        if (storedText && storedText.trim() !== '') {
+            // If text exists, disable buttons
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                button.classList.add('disabled');
+            });
+            inputField.disabled = false;
+            inputField.style.backgroundColor = 'white';
+        } else if (storedButtonClass) {
+            // If a button was previously selected
+            const button = document.querySelector(`.button.${CSS.escape(storedButtonClass)}`);
+            if (button) {
+                button.classList.add('selected');
+                selectedButton = storedButtonClass;
+                
+                // Disable text input when a button is selected
+                inputField.disabled = true;
+                inputField.value = '';
+                inputField.style.backgroundColor = '#e0e0e0';
+            }
         }
     }
+    
+    function toggleSelection(buttonClass) {
+        const button = document.querySelector(`.button.${CSS.escape(buttonClass)}`);
+        const inputField = document.getElementById('inputText');
 
+        if (selectedButton === buttonClass) {
+            // Deselect the button
+            button.classList.remove('selected');
+            selectedButton = null;
+            inputField.disabled = false;
+            inputField.style.backgroundColor = 'white';
+        } else {
+            // Select the button
+            if (selectedButton) {
+                // Deselect the previously selected button
+                document.querySelector(`.button.${CSS.escape(selectedButton)}`).classList.remove('selected');
+            }
+            button.classList.add('selected');
+            selectedButton = buttonClass;
+
+            // Disable the text input
+            inputField.disabled = true;
+            inputField.value = ''; // Clear the text input
+            inputField.style.backgroundColor = '#e0e0e0';
+        }
+
+        // Save state to localStorage
+        localStorage.setItem('digitalTwinDataButtonClass', selectedButton || '');
+        localStorage.setItem('digitalTwinDataText', inputField.value.trim());
+    }
+    
+    document.getElementById('inputText').addEventListener('input', function () {
+        const buttons = document.querySelectorAll('.button');
+        if (this.value.trim() !== '') {
+            // Disable buttons when text is entered
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                button.classList.add('disabled');
+            });
+            selectedButton = null; // Clear selected button
+        } else {
+            // Enable buttons when text is cleared
+            buttons.forEach(button => button.classList.remove('disabled'));
+            
+            // Attempt to restore previously selected button if text is empty
+            const storedButtonClass = localStorage.getItem('digitalTwinDataButtonClass');
+            if (storedButtonClass) {
+                const button = document.querySelector(`.button.${CSS.escape(storedButtonClass)}`);
+                if (button) {
+                    button.classList.add('selected');
+                    selectedButton = storedButtonClass;
+                }
+            }
+        }
+
+        // Save state to localStorage
+        localStorage.setItem('digitalTwinDataText', this.value.trim());
+        localStorage.setItem('digitalTwinDataButtonClass', selectedButton || '');
+    });
+    
     function goToNextPage() {
-        const selectedTypes = Array.from(selectedButtons).map(buttonClass => {
-            return document.querySelector(`.button.${buttonClass}`).textContent;
-        });
-        const inputText = document.getElementById('inputText').value;
-        // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
+        const inputField = document.getElementById('inputText');
+        let selectedTypes = [];
+        if (selectedButton) {
+            selectedTypes.push(document.querySelector(`.button.${CSS.escape(selectedButton)}`).textContent);
+        }
+        const inputText = inputField.value.trim();
+
+        if (!selectedTypes.length && !inputText) {
+            alert('Please select a button or enter text before proceeding.');
+            return;
+        }
+
+        // Store selectedTypes and inputText for later use
         localStorage.setItem('digitalTwinDataButton', JSON.stringify(selectedTypes));
         localStorage.setItem('digitalTwinDataText', inputText);
-        window.location.href = 'form3.html'; 
+
+        window.location.href = 'form3.html';
     }
+    
+    // Restore state on page load
+    window.onload = restoreState;
 </script>
 
 </body>
