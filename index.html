@@ -280,6 +280,26 @@
 <script>
     let selectedButton = null;
 
+    // Restore state from localStorage
+    function restoreState() {
+        const storedButtonClass = localStorage.getItem('digitalTwinObjectClass');
+        const storedName = localStorage.getItem('digitalTwinName');
+
+        // Restore selected button
+        if (storedButtonClass) {
+            const button = document.querySelector(`.button.${storedButtonClass}`);
+            if (button) {
+                button.classList.add('selected');
+                selectedButton = button;
+            }
+        }
+
+        // Restore text input
+        if (storedName) {
+            document.getElementById('digitalTwinName').value = storedName;
+        }
+    }
+
     function toggleSelection(buttonClass) {
         const button = document.querySelector(`.button.${buttonClass}`);
         if (selectedButton && selectedButton !== button) {
@@ -287,23 +307,37 @@
         }
         button.classList.toggle('selected');
         selectedButton = button.classList.contains('selected') ? button : null;
+
+        // Save selected button to localStorage
+        localStorage.setItem('digitalTwinObjectClass', button.classList.contains('selected') ? buttonClass : '');
     }
 
     function goToNextPage() {
         const digitalTwinObject = selectedButton ? selectedButton.textContent : '';
-        const digitalTwinName = document.getElementById('digitalTwinName').value;
-        
+        const digitalTwinName = document.getElementById('digitalTwinName').value.trim();
+
+        if (!digitalTwinObject) {
+            alert('Please select a button before continuing.');
+            return;
+        }
+
+        if (!digitalTwinName) {
+            alert('Please enter a name before continuing.');
+            return;
+        }
+
         // Store digitalTwinObject and digitalTwinName in localStorage
         localStorage.setItem('digitalTwinObject', digitalTwinObject);
         localStorage.setItem('digitalTwinName', digitalTwinName);
-        
-        // For debugging: log the values to console
-        console.log('Selected Type:', digitalTwinObject);
-        console.log('Input Text:', digitalTwinName);
-        
+
         window.location.href = 'form2.html'; // Adjust this URL as needed
     }
+
+    // Restore state on page load
+    window.onload = restoreState;
 </script>
+
+
 
 </body>
 </html>

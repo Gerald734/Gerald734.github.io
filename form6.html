@@ -248,6 +248,11 @@
             font-size: 32px;
             border: 1px solid #ccc;
         }
+        .button.disabled {
+            background: #e0e0e0;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -293,28 +298,131 @@
 </div>
 
 <script>
-    let selectedButtons = new Set();
+    let selectedButtons = new Set(); // To track the selected buttons
 
-    function toggleSelection(buttonClass) {
-        const button = document.querySelector(`.button.${buttonClass}`);
-        button.classList.toggle('selected');
-        if (selectedButtons.has(buttonClass)) {
-            selectedButtons.delete(buttonClass);
+    // Restore state from localStorage
+    function restoreState() {
+        const storedButtons = JSON.parse(localStorage.getItem('digitalTwinRepositoryButton')) || [];
+        const storedText = localStorage.getItem('digitalTwinRepositoryText') || '';
+        const inputField = document.getElementById('inputText');
+
+        // Restore text input
+        inputField.value = storedText;
+
+        // Handle button and text input state
+        if (storedText.trim() !== '') {
+            // If text exists, disable buttons
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                button.classList.add('disabled');
+            });
+            inputField.disabled = false;
+            inputField.style.backgroundColor = 'white';
         } else {
-            selectedButtons.add(buttonClass);
+            // Restore selected buttons
+            storedButtons.forEach(buttonText => {
+                const button = Array.from(document.querySelectorAll('.button'))
+                    .find(btn => btn.textContent === buttonText);
+                if (button) {
+                    button.classList.add('selected');
+                    selectedButtons.add(button.textContent);
+                }
+            });
+
+            // Disable text input if buttons are selected
+            if (selectedButtons.size > 0) {
+                inputField.disabled = true;
+                inputField.style.backgroundColor = '#e0e0e0';
+            }
         }
     }
-
+    
+    function toggleSelection(buttonClass) {
+        const button = document.querySelector(`.button.${CSS.escape(buttonClass)}`);
+        const inputField = document.getElementById('inputText');
+        const buttonText = button.textContent;
+    
+        if (selectedButtons.has(buttonText)) {
+            // Deselect the button
+            button.classList.remove('selected');
+            selectedButtons.delete(buttonText);
+    
+            // Enable the text input if no buttons are selected
+            if (selectedButtons.size === 0) {
+                inputField.disabled = false;
+                inputField.style.backgroundColor = 'white';
+            }
+        } else {
+            // Select the button
+            button.classList.add('selected');
+            selectedButtons.add(buttonText);
+    
+            // Save the text value before clearing and disabling
+            localStorage.setItem('digitalTwinRepositoryText', inputField.value.trim());
+    
+            // Disable the text input
+            inputField.disabled = true;
+            inputField.value = ''; // Clear the text input
+            inputField.style.backgroundColor = '#e0e0e0';
+        }
+    
+        // Save state to localStorage
+        saveState();
+    }
+    
+    document.getElementById('inputText').addEventListener('input', function () {
+        const buttons = document.querySelectorAll('.button');
+        if (this.value.trim() !== '') {
+            // Disable buttons when text is entered
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                button.classList.add('disabled');
+            });
+            selectedButtons.clear(); // Clear all selected buttons
+        } else {
+            // Enable buttons when text is cleared
+            buttons.forEach(button => {
+                button.classList.remove('disabled');
+                
+                // Restore previously selected buttons if text is cleared
+                const storedButtons = JSON.parse(localStorage.getItem('digitalTwinRepositoryButton')) || [];
+                if (storedButtons.includes(button.textContent)) {
+                    button.classList.add('selected');
+                    selectedButtons.add(button.textContent);
+                }
+            });
+        }
+    
+        // Save state to localStorage
+        saveState();
+    });
+    
+    function saveState() {
+        // Save selected buttons and text input to localStorage
+        localStorage.setItem('digitalTwinRepositoryButton', JSON.stringify(Array.from(selectedButtons)));
+        localStorage.setItem('digitalTwinRepositoryText', document.getElementById('inputText').value.trim());
+    }
+    
     function goToNextPage() {
-        const selectedTypes = Array.from(selectedButtons).map(buttonClass => {
-            return document.querySelector(`.button.${buttonClass}`).textContent;
-        });
-        const inputText = document.getElementById('inputText').value;
-        // Store selectedTypes and inputText for later use, e.g., in local storage or send to server
-        localStorage.setItem('digitalTwinRepositoryButton', JSON.stringify(selectedTypes));
-        localStorage.setItem('digitalTwinRepositoryText', inputText);
+        const inputField = document.getElementById('inputText');
+        let selectedTypes = Array.from(selectedButtons);
+        const inputText = inputField.value.trim();
+    
+        if (selectedTypes.length === 0 && !inputText) {
+            alert('Please select at least one button or enter text before proceeding.');
+            return;
+        }
+    
+        // Save state to localStorage
+        saveState();
+    
+        // Navigate to the next page
         window.location.href = 'form7.html'; // Adjust this URL as needed
     }
+    
+    // Restore state on page load
+    window.onload = restoreState;
 </script>
 
 </body>

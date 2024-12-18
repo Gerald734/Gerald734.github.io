@@ -404,6 +404,32 @@
             border-radius: 30px;
             border: 1px #524E4E solid;
         }
+        .steps-container {
+            cursor: pointer;
+            position: absolute;
+            top: 340px; /* Align with main content */
+            left: 1410px;  /* Position to the right of the container */
+            width: 75px; /* Adjust as needed */
+            height: 535px; /* Match main content height */
+            background-color: #AF1D59; /* Match existing color scheme */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0; /* Add some padding */
+            border-radius: 5px;
+        }
+        .step-icon {
+            width: 55px;
+            height: 55px;
+            filter: invert(96%) sepia(13%) saturate(157%) hue-rotate(319deg) brightness(104%) contrast(87%); /* Default eggshell color */
+        }
+        .step-icon.active {
+            filter: invert(55%) sepia(100%) saturate(326%) hue-rotate(340deg) brightness(100%) contrast(101%); /* Highlighted color */
+        }
+        .step-icon:hover {
+            opacity: 0.7; /* Add a hover effect for better UX */
+        }
     </style>
 </head>
 <body>
@@ -464,50 +490,51 @@
     <div class="box box3"></div>
     <div class="box box4"></div>
     <div class="box box5"></div>
+    <div class="steps-container">
+        <img class="step-icon active" src="icon1.png" alt="Icon 1" data-form="index.html">
+        <img class="step-icon active" src="icon2.png" alt="Icon 2" data-form="form2.html">
+        <img class="step-icon active" src="icon3.png" alt="Icon 3" data-form="form3.html">
+        <img class="step-icon active" src="icon4.png" alt="Icon 4" data-form="form4.html">
+        <img class="step-icon active" src="icon5.png" alt="Icon 5" data-form="form5.html">
+        <img class="step-icon active" src="icon6.png" alt="Icon 6" data-form="form6.html">
+        <img class="step-icon active" src="icon7.png" alt="Icon 7" data-form="form7.html">
+        <img class="step-icon active" src="icon8.png" alt="Icon 8" data-form="form8.html">
+        <img class="step-icon active" src="icon9.png" alt="Icon 9" data-form="form9.html">
+        <img class="step-icon active" src="icon10.png" alt="Icon 10" data-form="form10.html">
+    </div>
 </div>
 
 <script>
+
     // getValidValue is used if only either the text field or the button selection should be used
     // getConcatenatedValue uses both if they contain values
     function getValidValue(buttonKey, textKey, defaultValue) {
-        // Retrieve and parse the value from buttonKey
         let value = localStorage.getItem(buttonKey);
         if (value !== null) {
             try {
                 let parsedValue = JSON.parse(value);
                 if (Array.isArray(parsedValue) && parsedValue.length > 0) {
-                    // Convert array to a string
                     return parsedValue.join(', ');
                 } else if (typeof parsedValue === 'string' && parsedValue.trim() !== '') {
                     return parsedValue;
                 }
             } catch (e) {
-                // Parsing failed, fall back to raw value
                 if (typeof value === 'string' && value.trim() !== '') {
                     return value;
                 }
             }
         }
-    
-        // If buttonKey is not valid, check the textKey
         value = localStorage.getItem(textKey);
         if (typeof value === 'string' && value.trim() !== '') {
             return value;
         }
-    
-        // Return the default value if neither buttonKey nor textKey are valid
         return defaultValue;
     }
 
     function getConcatenatedValue(buttonKey, textKey, defaultValue) {
-        // Retrieve and parse the value from buttonKey
         let buttonValue = localStorage.getItem(buttonKey);
         let textValue = localStorage.getItem(textKey);
-    
-        // Initialize the result variable
         let result = '';
-    
-        // Check if buttonValue is valid
         if (buttonValue !== null) {
             try {
                 let parsedButtonValue = JSON.parse(buttonValue);
@@ -517,26 +544,20 @@
                     result += parsedButtonValue;
                 }
             } catch (e) {
-                // If parsing fails, fall back to raw value
                 if (typeof buttonValue === 'string' && buttonValue.trim() !== '') {
                     result += buttonValue;
                 }
             }
         }
-    
-        // Add a space or separator if both buttonValue and textValue are valid
         if (result && textValue !== null) {
             if (typeof textValue === 'string' && textValue.trim() !== '') {
                 result += ' ' + textValue;
             }
         } else if (textValue !== null) {
-            // If only textValue is valid
             if (typeof textValue === 'string' && textValue.trim() !== '') {
                 result = textValue;
             }
         }
-    
-        // If result is empty or invalid, return the default value
         return result.trim() !== '' ? result : defaultValue;
     }
     
@@ -544,7 +565,7 @@
         console.log('All localStorage items:', { ...localStorage });
         var digitalTwinObject = localStorage.getItem("digitalTwinObject") || 'Default Type';
         var digitalTwinName = localStorage.getItem("digitalTwinName") || 'Default Name';
-        var digitalTwinDataType = getConcatenatedValue("digitalTwinDataButton","digitalTwinDataText", "Default Data")
+        var digitalTwinDataType = getConcatenatedValue("digitalTwinDataButton","digitalTwinDataText", "Default Data");
         var digitalTwinControlType = getConcatenatedValue("digitalTwinControlTypeButton", "digitalTwinControlTypeText", "Default Control Type");
         var digitalTwinDataTransfer = getConcatenatedValue("digitalTwinDataTransferButton", "digitalTwinDataTransferText", "Default Data Transfer");
         var digitalTwinDataSource = getValidValue("digitalTwinDataSourceButton", "digitalTwinDataSourceText", "Default Data Source");
@@ -554,7 +575,6 @@
         var digitalTwinTwinningEngine = getValidValue("digitalTwinTwinningEngineButton", "digitalTwinTwinningEngineText", "Twinning Engine");
         var digitalTwinModel = getValidValue("digitalTwinModelButton", "digitalTwinModelText", "Default Model");
         
-        // Replace all instances in the entire document
         document.body.innerHTML = document.body.innerHTML.replace(/FORM1\.A/gi, digitalTwinObject);
         document.body.innerHTML = document.body.innerHTML.replace(/name of your physical object/gi, digitalTwinName);
         document.body.innerHTML = document.body.innerHTML.replace(/Data Capturing/gi, digitalTwinDataType);
@@ -567,18 +587,38 @@
         document.body.innerHTML = document.body.innerHTML.replace(/Twinning Engine/gi, digitalTwinTwinningEngine);
         document.body.innerHTML = document.body.innerHTML.replace(/Model Use/gi, digitalTwinModel);
 
-        // digitalTwinObject mapping to the according icon png
+
+        const stepsContainer = document.querySelector('.steps-container');
+        if (stepsContainer) {
+            stepsContainer.addEventListener('click', function(event) {
+                console.log("Click registered on steps container");
+                const target = event.target;
+                if (target.classList.contains('step-icon')) {
+                    const form = target.getAttribute('data-form');
+                    if (form) {
+                        console.log("Redirecting to:", form);
+                        window.location.href = form;
+                    } else {
+                        console.error("data-form attribute not found on target");
+                    }
+                }
+            });
+        } else {
+            console.error("stepsContainer element not found");
+        }
+
         const imageMapping = {
             'Default Type': 'iconmachinetool.png',
             'Machine Tool': 'iconmachinetool.png',
             'Process': 'iconprocess.png',
             'Product': 'iconproduct.png',
-            // Add more mappings as needed
         };
-        // selecting the img element of the class icon
-        var icon = document.querySelector("img.icon")
+        var icon = document.querySelector("img.icon");
         var imageFilename = imageMapping[digitalTwinObject]; 
-        icon.src = imageFilename;
+        if (icon) {  // Check if icon element exists
+            icon.src = imageFilename;
+        }
+
     });
 </script>
 
