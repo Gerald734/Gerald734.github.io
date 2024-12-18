@@ -321,11 +321,12 @@
             inputField.style.backgroundColor = 'white';
         } else {
             // Restore selected buttons
-            storedButtons.forEach(buttonClass => {
-                const button = document.querySelector(`.button.${CSS.escape(buttonClass)}`);
+            storedButtons.forEach(buttonText => {
+                const button = Array.from(document.querySelectorAll('.button'))
+                    .find(btn => btn.textContent === buttonText);
                 if (button) {
                     button.classList.add('selected');
-                    selectedButtons.add(buttonClass);
+                    selectedButtons.add(button.textContent);
                 }
             });
 
@@ -340,21 +341,22 @@
     function toggleSelection(buttonClass) {
         const button = document.querySelector(`.button.${CSS.escape(buttonClass)}`);
         const inputField = document.getElementById('inputText');
+        const buttonText = button.textContent;
     
-        if (selectedButtons.has(buttonClass)) {
+        if (selectedButtons.has(buttonText)) {
             // Deselect the button
             button.classList.remove('selected');
-            selectedButtons.delete(buttonClass);
+            selectedButtons.delete(buttonText);
     
             // Enable the text input if no buttons are selected
             if (selectedButtons.size === 0) {
                 inputField.disabled = false;
-                inputField.style.backgroundColor = 'white'; // Restore text input color
+                inputField.style.backgroundColor = 'white';
             }
         } else {
             // Select the button
             button.classList.add('selected');
-            selectedButtons.add(buttonClass);
+            selectedButtons.add(buttonText);
     
             // Save the text value before clearing and disabling
             localStorage.setItem('digitalTwinModelText', inputField.value.trim());
@@ -362,7 +364,7 @@
             // Disable the text input
             inputField.disabled = true;
             inputField.value = ''; // Clear the text input
-            inputField.style.backgroundColor = '#e0e0e0'; // Grey out the text input
+            inputField.style.backgroundColor = '#e0e0e0';
         }
     
         // Save state to localStorage
@@ -385,9 +387,9 @@
                 
                 // Restore previously selected buttons if text is cleared
                 const storedButtons = JSON.parse(localStorage.getItem('digitalTwinModelButton')) || [];
-                if (storedButtons.includes(button.classList[1])) {
+                if (storedButtons.includes(button.textContent)) {
                     button.classList.add('selected');
-                    selectedButtons.add(button.classList[1]);
+                    selectedButtons.add(button.textContent);
                 }
             });
         }
@@ -404,9 +406,7 @@
     
     function goToNextPage() {
         const inputField = document.getElementById('inputText');
-        let selectedTypes = Array.from(selectedButtons).map(buttonClass =>
-            document.querySelector(`.button.${CSS.escape(buttonClass)}`).textContent
-        );
+        let selectedTypes = Array.from(selectedButtons);
         const inputText = inputField.value.trim();
     
         if (selectedTypes.length === 0 && !inputText) {
