@@ -194,15 +194,16 @@
         }
         .icon-container {
             position: absolute;
-            top: 197px; /* Adjusted 5px higher */
-            left: 841px; /* Adjusted to align further right */
-            width: 550px;
+            top: 197px; 
+            left: 841px; 
+            width: 570px;
             height: 75px;
             background-color: #AF1D59;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 10px;
+            box-sizing: border-box;
         }
         .icon {
             width: 55px;
@@ -221,8 +222,20 @@
             position: absolute;
             font-size: 20px;
             font-weight: 700;
-            color: rgb(221, 23, 23);
+            color: white;
+            background: #E50046;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        .go-back:hover,
+        .next:hover {
+            background: #CC0040;
         }
         .go-back {
             top: 550px;
@@ -277,7 +290,7 @@
     <div class="text main name">If none of the above mentioned is correct, please type in your solution here:</div>
     <div class="main-question">How is the data transferred from the physical object to your data repository?</div>
     <div class="footer-title">Helpful Information | External Links</div>
-    <div class="info-text">Various technologies enable data transmission from machines to digital twins. Ethernet provides reliable, fast data transfer for industrial automation and manufacturing. Wi-Fi offers flexible wireless connectivity in production facilities and warehouses. 5G/4G LTE ensures high bandwidth and low latency for remote monitoring and mobile applications. Industrial IoT gateways connect machines and sensors to the internet, supporting edge computing and data aggregation. Bluetooth handles short-range communication for sensors and wearables. LoRaWAN offers long-range, low-power wireless networks for large facilities and agriculture. Zigbee and Z-Wave are used for short to medium-range communication in home and building automation. These technologies ensure efficient, reliable data transfer tailored to specific needs. A more detailed description can be found in <a href="https://doi.org/10.48550/arXiv.2203.14813" target="_blank" style="color: white; text-decoration: underline;">(He et al., 2022)</a>.</div>
+    <div class="info-text">Various technologies enable data transmission from machines to digital twins. Ethernet provides reliable, fast data transfer for industrial automation and manufacturing. Wi-Fi offers flexible wireless connectivity in production facilities and warehouses. 5G/4G LTE ensures high bandwidth and low latency for remote monitoring and mobile applications. Industrial IoT gateways connect machines and sensors to the internet, supporting edge computing and data aggregation. Bluetooth handles short-range communication for sensors and wearables. LoRaWAN offers long-range, low-power wireless networks for large facilities and agriculture. Zigbee and Z-Wave are used for short to medium-range communication in home and building automation. These technologies ensure efficient, reliable data transfer tailored to specific needs. A more detailed description can be found in (<a href="https://arxiv.org/pdf/2208.14197" target="_blank"  style="color: white; text-decoration: underline;">Thelen et al., 2022</a>).</div>
     <div class="main-title">In 10 Steps to Your Digital Twin:<br/>Defining Essential Design Elements</div>
     <img class="logo" src="logo.png" alt="Logo">
     <img class="logo2" src="Logo2.svg" alt="Logo 2">
