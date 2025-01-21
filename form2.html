@@ -56,34 +56,34 @@
             position: absolute;
             text-align: center;
             color: white;
-            font-size: 24px; 
+            font-size: 24px; /* Adjusted font size */
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             border: none;
         }
-        .button.gps {
+        .button.monitoring {
             top: 425px;
             left: 85px;
         }
-        .button.ecg {
+        .button.simulation {
             top: 425px;
             left: 450px;
         }
-        .button.flexometer {
+        .button.optimization {
             top: 425px;
             left: 810px;
         }
-        .button.force {
+        .button.assessment {
             top: 500px;
             left: 82px;
         }
-        .button.humidity {
+        .button.prediction {
             top: 500px;
             left: 450px;
         }
-        .button.ecu {
+        .button.control {
             top: 500px;
             left: 810px;
         }
@@ -133,7 +133,7 @@
         }
         .text.type {
             top: 390px;
-            left: -230px;
+            left: -75px;
         }
         .text.name {
             top: 555px; /* Adjusted position */
@@ -154,7 +154,7 @@
             height: 164px;
             position: absolute;
             top: 736px;
-            left: 90px; 
+            left: 90px; /* Adjusted to align with other sections */
             color: white;
             font-size: 20px;
             font-weight: 300;
@@ -163,8 +163,8 @@
             width: 562px;
             height: 63px;
             position: absolute;
-            top: 685px; 
-            left: 55px; 
+            top: 685px; /* Adjusted position */
+            left: 55px; /* Adjusted to align with other sections */
             text-align: center;
             color: white;
             font-size: 32px;
@@ -194,8 +194,8 @@
         }
         .icon-container {
             position: absolute;
-            top: 197px;
-            left: 841px; 
+            top: 197px; /* Adjusted 5px higher */
+            left: 841px; /* Adjusted to align further right */
             width: 550px;
             height: 75px;
             background-color: #AF1D59;
@@ -262,22 +262,22 @@
     <div class="main-content"></div>
     <div class="subheader"></div>
     <div class="footer"></div>
-    <div class="button gps" onclick="toggleSelection('gps')">GPS-/Position-Sensor</div>
-    <div class="button ecg" onclick="toggleSelection('ecg')">ECG (Pulse)-Sensor</div>
-    <div class="button flexometer" onclick="toggleSelection('flexometer')">Flexometer</div>
-    <div class="button force" onclick="toggleSelection('force')">Force-Sensor</div>
-    <div class="button humidity" onclick="toggleSelection('humidity')">Temperature-Sensor</div>
-    <div class="button ecu" onclick="toggleSelection('ecu')">Operational Data by ECU</div>
+    <div class="button monitoring" onclick="toggleSelection('monitoring')">Monitoring</div>
+    <div class="button simulation" onclick="toggleSelection('simulation')">Simulation</div>
+    <div class="button optimization" onclick="toggleSelection('optimization')">Optimization</div>
+    <div class="button assessment" onclick="toggleSelection('assessment')">Assessment</div>
+    <div class="button prediction" onclick="toggleSelection('prediction')">Prediction</div>
+    <div class="button control" onclick="toggleSelection('control')">Control</div>
     <div class="input-box"></div>
     <div class="freitextfeld">
-        <input type="text" id="inputText" placeholder="Data Capturing">
+        <input type="text" id="inputText" placeholder="Digital Twin Function">
     </div>
-    <div class="text header">Data Capturing</div>
-    <div class="text main type">Please choose one type:</div>
-    <div class="text main name">If none of the above mentioned is correct, please type in your solution here:</div>
-    <div class="main-question">How will the data for your digital twin be captured?</div>
+    <div class="text header">Digital Twin Function</div>
+    <div class="text main type">Please choose (more than one selection is possible):</div>
+    <div class="text main name">If none of the above mentioned is correct, please type in your function here:</div>
+    <div class="main-question">What function does your digital twin have?</div>
     <div class="footer-title">Helpful Information | External Links</div>
-    <div class="info-text">Digital twins use various sensors to capture real-time data. Temperature sensors monitor heat, pressure sensors measure liquids and gases, and humidity sensors track moisture levels. Position and speed sensors monitor moving parts and velocities, while motion sensors detect vibrations. Force sensors measure weights, and flow sensors gauge fluid rates. Light sensors control lighting, acoustic sensors monitor sounds, and gas sensors detect air quality. Optical sensors, like cameras and LIDAR, handle imaging and distances. Sensor choice depends on the application, ensuring precise data for accurate modeling. An analysis of the most commonly used sensors in IoT devices can be found in <a href="https://www.mdpi.com/2078-2489/13/5/241" target="_blank" style="color: white; text-decoration: underline;">(Montalvo et al., 2022)</a>.</div>
+    <div class="info-text">Monitoring includes real-time tracking of system parameters and fault detection. Simulation allows for virtual testing and scenario analysis to improve efficiency and reduce risks. Prediction uses data to forecast future states and maintenance needs with machine learning models. Control involves remote management and automated adjustments to optimize performance. Optimization identifies strategies to enhance efficiency using continuous data analysis. Maintenance includes predictive maintenance to prevent failures and plan activities based on condition data (<a href="https://vciba.springeropen.com/articles/10.1186/s42492-023-00137-4" target="_blank"  style="color: white; text-decoration: underline;">Yao et al., 2023</a>).</div>
     <div class="main-title">In 10 Steps to Your Digital Twin:<br/>Defining Essential Design Elements</div>
     <img class="logo" src="logo.png" alt="Logo">
     <img class="logo2" src="Logo2.svg" alt="Logo 2">
@@ -298,19 +298,19 @@
 </div>
 
 <script>
-    let selectedButton = null; // To track the selected button
+    let selectedButtons = new Set(); // To track the selected buttons
 
     // Restore state from localStorage
     function restoreState() {
-        const storedButtonClass = localStorage.getItem('digitalTwinDataButtonClass');
-        const storedText = localStorage.getItem('digitalTwinDataText');
+        const storedButtons = JSON.parse(localStorage.getItem('digitalTwinFunctionButton')) || [];
+        const storedText = localStorage.getItem('digitalTwinFunctionText') || '';
         const inputField = document.getElementById('inputText');
 
         // Restore text input
-        inputField.value = storedText || '';
+        inputField.value = storedText;
 
         // Handle button and text input state
-        if (storedText && storedText.trim() !== '') {
+        if (storedText.trim() !== '') {
             // If text exists, disable buttons
             const buttons = document.querySelectorAll('.button');
             buttons.forEach(button => {
@@ -319,16 +319,20 @@
             });
             inputField.disabled = false;
             inputField.style.backgroundColor = 'white';
-        } else if (storedButtonClass) {
-            // If a button was previously selected
-            const button = document.querySelector(`.button.${CSS.escape(storedButtonClass)}`);
-            if (button) {
-                button.classList.add('selected');
-                selectedButton = storedButtonClass;
-                
-                // Disable text input when a button is selected
+        } else {
+            // Restore selected buttons
+            storedButtons.forEach(buttonText => {
+                const button = Array.from(document.querySelectorAll('.button'))
+                    .find(btn => btn.textContent === buttonText);
+                if (button) {
+                    button.classList.add('selected');
+                    selectedButtons.add(button.textContent);
+                }
+            });
+
+            // Disable text input if buttons are selected
+            if (selectedButtons.size > 0) {
                 inputField.disabled = true;
-                inputField.value = '';
                 inputField.style.backgroundColor = '#e0e0e0';
             }
         }
@@ -337,31 +341,34 @@
     function toggleSelection(buttonClass) {
         const button = document.querySelector(`.button.${CSS.escape(buttonClass)}`);
         const inputField = document.getElementById('inputText');
-
-        if (selectedButton === buttonClass) {
+        const buttonText = button.textContent;
+    
+        if (selectedButtons.has(buttonText)) {
             // Deselect the button
             button.classList.remove('selected');
-            selectedButton = null;
-            inputField.disabled = false;
-            inputField.style.backgroundColor = 'white';
+            selectedButtons.delete(buttonText);
+    
+            // Enable the text input if no buttons are selected
+            if (selectedButtons.size === 0) {
+                inputField.disabled = false;
+                inputField.style.backgroundColor = 'white';
+            }
         } else {
             // Select the button
-            if (selectedButton) {
-                // Deselect the previously selected button
-                document.querySelector(`.button.${CSS.escape(selectedButton)}`).classList.remove('selected');
-            }
             button.classList.add('selected');
-            selectedButton = buttonClass;
-
+            selectedButtons.add(buttonText);
+    
+            // Save the text value before clearing and disabling
+            localStorage.setItem('digitalTwinFunctionText', inputField.value.trim());
+    
             // Disable the text input
             inputField.disabled = true;
             inputField.value = ''; // Clear the text input
             inputField.style.backgroundColor = '#e0e0e0';
         }
-
+    
         // Save state to localStorage
-        localStorage.setItem('digitalTwinDataButtonClass', selectedButton || '');
-        localStorage.setItem('digitalTwinDataText', inputField.value.trim());
+        saveState();
     }
     
     document.getElementById('inputText').addEventListener('input', function () {
@@ -372,50 +379,52 @@
                 button.classList.remove('selected');
                 button.classList.add('disabled');
             });
-            selectedButton = null; // Clear selected button
+            selectedButtons.clear(); // Clear all selected buttons
         } else {
             // Enable buttons when text is cleared
-            buttons.forEach(button => button.classList.remove('disabled'));
-            
-            // Attempt to restore previously selected button if text is empty
-            const storedButtonClass = localStorage.getItem('digitalTwinDataButtonClass');
-            if (storedButtonClass) {
-                const button = document.querySelector(`.button.${CSS.escape(storedButtonClass)}`);
-                if (button) {
+            buttons.forEach(button => {
+                button.classList.remove('disabled');
+                
+                // Restore previously selected buttons if text is cleared
+                const storedButtons = JSON.parse(localStorage.getItem('digitalTwinFunctionButton')) || [];
+                if (storedButtons.includes(button.textContent)) {
                     button.classList.add('selected');
-                    selectedButton = storedButtonClass;
+                    selectedButtons.add(button.textContent);
                 }
-            }
+            });
         }
-
+    
         // Save state to localStorage
-        localStorage.setItem('digitalTwinDataText', this.value.trim());
-        localStorage.setItem('digitalTwinDataButtonClass', selectedButton || '');
+        saveState();
     });
+    
+    function saveState() {
+        // Save selected buttons and text input to localStorage
+        localStorage.setItem('digitalTwinFunctionButton', JSON.stringify(Array.from(selectedButtons)));
+        localStorage.setItem('digitalTwinFunctionText', document.getElementById('inputText').value.trim());
+    }
     
     function goToNextPage() {
         const inputField = document.getElementById('inputText');
-        let selectedTypes = [];
-        if (selectedButton) {
-            selectedTypes.push(document.querySelector(`.button.${CSS.escape(selectedButton)}`).textContent);
-        }
+        let selectedTypes = Array.from(selectedButtons);
         const inputText = inputField.value.trim();
-
-        if (!selectedTypes.length && !inputText) {
-            alert('Please select a button or enter text before proceeding.');
+    
+        if (selectedTypes.length === 0 && !inputText) {
+            alert('Please select at least one button or enter text before proceeding.');
             return;
         }
-
-        // Store selectedTypes and inputText for later use
-        localStorage.setItem('digitalTwinDataButton', JSON.stringify(selectedTypes));
-        localStorage.setItem('digitalTwinDataText', inputText);
-
-        window.location.href = 'form3.html';
+    
+        // Save state to localStorage
+        saveState();
+    
+        // Navigate to the next page
+        window.location.href = 'form3.html'; // Adjust this URL as needed
     }
     
     // Restore state on page load
     window.onload = restoreState;
 </script>
+
 
 </body>
 </html>
